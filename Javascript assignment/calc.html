@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculater</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box{
+            height: 350px;
+            width: 550px;
+            border: 4px solid black;
+            margin: 0 auto;
+            padding-left: 20px;
+            font-size: 25px;
+        }
+        input {
+            font-size: 20px;
+        }
+        .btn{
+            height: 35px;
+            width: 35px;
+            font-size: 25px;
+        }
+
+        h3 {
+            margin-top: 20px;
+            text-align: center;
+        }
+        b{
+            color: blue;
+        }
+
+    </style>
+</head>
+
+<body>
+    <br>
+    <h2 align="center"><u>Practical Tasks</u></h2>
+    <br>
+    <h2>2. Create basic math operation in JS .</h2>
+    <br><br>
+    <ul>
+        <div class="box">
+            <h3>Math operations</h3>
+            <br>
+                <label for="First Number">First Number :-</label>
+                <input type="number" name="number1" id="number1" placeholder="Enter first Number...">
+                <br><br>
+                <label for="Second Number">Second Number :-</label>
+                <input type="number" name="number2" id="number2" placeholder="Enter Second Number...">
+                <br><br>
+                <button class="btn" onclick="add()">+</button>
+                <button class="btn" onclick="sub()">-</button>
+                <button class="btn" onclick="mult()">*</button>
+                <button class="btn" onclick="divi()">/</button>
+                <br><br>
+                <p>Answer is : <b id="b">00</b></p>
+                
+        </div>
+    </ul>
+    <script>
+        function add() {
+            let a = document.getElementById('number1').value;
+            let b = document.getElementById('number2').value;
+            sum = parseInt(a) + parseInt(b);
+            document.getElementById("b").innerHTML =sum;
+        }
+        function sub() {
+            let a = document.getElementById('number1').value;
+            let b = document.getElementById('number2').value;
+            subt = parseInt(a) - parseInt(b);
+            document.getElementById("b").innerHTML =subt;
+        }
+        function mult() {
+            let a = document.getElementById('number1').value;
+            let b = document.getElementById('number2').value;
+            multi = parseInt(a) * parseInt(b);
+            document.getElementById("b").innerHTML =multi;
+        }
+        function divi() {
+            let a = document.getElementById('number1').value;
+            let b = document.getElementById('number2').value;
+            div = parseInt(a) / parseInt(b);
+            document.getElementById("b").innerHTML =div;
+        }
+    </script>
+</body>
+
+</html>
