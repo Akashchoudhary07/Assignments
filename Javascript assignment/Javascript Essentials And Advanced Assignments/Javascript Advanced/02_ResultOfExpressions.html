@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>What will be the result for these expressions?</h1>
+    <ol start="1">
+        <li>5 > 4</li>
+        <li>"apple" > "pineapple"</li>
+        <li>"2" > "12"</li>
+        <li>undefined == null</li>
+        <li>undefined === null</li>
+        <li>null == "\n0\n"</li>
+        <li>null === +"\n0\n"</li>
+    </ol>
+    <h2>Answers :-</h2>
+
+    <script>
+
+        
+        document.write("1." +(5 > 4) + "<br>");                 // 1. true
+        document.write("2." +("apple" > "pineapple") + "<br>"); // 2. false
+        document.write("3." +("2" > "12") + "<br>");            // 3. true
+        document.write("4." +(undefined == null) + "<br>");     // 4. true
+        document.write("5." +(undefined === null) + "<br>");    // 5. false
+        document.write("6." +(null == "\n0\n") + "<br>");       // 6. false
+        document.write("7." +(null === +"\n0\n"));              // 7. false
+    </script>
+</body>
+
+</html>
