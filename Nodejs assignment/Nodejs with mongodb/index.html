@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node with Mongodb</title>
+    <style>
+        body {
+            background-color: rgb(210, 206, 206);
+            padding: 0px 40px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        hr {
+            padding: 3px 0px;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Database - No Sql- Mongodb</h1>
+    <br><br>
+    <hr>
+    <h2><u>1. What is MongoDB ?</u></h2>
+    <ul>
+        <li>MongoDB is an open-source document-oriented database that is designed to store a large scale of data and
+            also allows you to work with that data very efficiently. It is categorized under the NoSQL (Not only SQL)
+            database because the storage and retrieval of data in the MongoDB are not in the form of tables.</li>
+        <li>The MongoDB database is developed and managed by MongoDB.Inc under SSPL(Server Side Public License) and
+            initially released in February 2009. It also provides official driver support for all the popular languages
+            like C, C++, C#, and .Net, Go, Java, Node.js, Perl, PHP, Python, Motor, Ruby, Scala, Swift, Mongoid. So,
+            that you can create an application using any of these languages. Nowadays there are so many companies that
+            used MongoDB like Facebook, Nokia, eBay, Adobe, Google, etc. to store their large amount of data. </li>
+    </ul>
+    <br><br>
+    <hr>
+    <h2><u>2. What is difference between mongo DB and SQL ?</u></h2>
+    <ul>
+        <li>MongoDB is a NoSQL database which means it does not use the traditional table-based relational database
+            structure. Instead of it uses a flexible and document-oriented data model that stores data in BSON (Binary
+            JSON) format.</li>
+        <li>Unlike SQL databases that use rows and columns, MongoDB stores data as JSON-like documents, making it easier
+            to handle unstructured data and providing greater flexibility in terms of schema design.</li>
+    </ul>
+    <br><br>
+    <hr>
+    <h2><u>3. Create database for online shopping app.</u></h2>
+    <ul>
+        <li>for creating databse for online shopping app :---</li>
+        <code>
+            <strong><h3>--- use onlineshop  //  in which "onlineshop" is a name of database</h3></strong>
+        </code>
+    </ul>
+    <br><br>
+    <hr>
+    <h2><u>4. Create Require collections for online shopping app and documents.</u></h2>
+    <ul>
+        <li><h3>User</h3></li>
+        <li><h3>Product category </h3></li>
+        <li><h3>Product</h3> </li>
+        <li><h3>Order</h3></li>
+        <li><h3>Review</h3> </li>
+<pre>
+<code>
+<strong><h3>
+                    -----USER COLLECTION-----
+    
+    {
+    "_id": ObjectId("..."), // Unique identifier for each user (MongoDB's ObjectId)
+    "name": "Jane Doe",
+    "email": "jane@example.com",
+    "password": "hashed_password_here", // Hashed password
+    "phone_number": "1234567890",
+    "address": [
+      {
+        "street": "123 Elm St",
+        "city": "New York",
+        "state": "NY",
+        "zip": "10001",
+        "country": "USA"
+      }
+    ],
+    "created_at": ISODate("2024-11-05T12:00:00Z"),
+    "wishlist": [
+      {
+        "product_id": ObjectId("..."), // Reference to a product in the Product collection
+        "added_at": ISODate("2024-11-01T10:00:00Z")
+      }
+    ],
+    "cart": [
+      {
+        "product_id": ObjectId("..."),
+        "quantity": 2
+      }
+    ]
+  } 
+  
+  
+
+
+                 -----PRODUCT-CATEGORY COLLECTION-----
+
+{
+  "_id": ObjectId("..."),
+  "name": "Smartphone XYZ",
+  "description": "Latest model with advanced features.",
+  "price": 699.99,
+  "stock": 50,
+  "category_id": ObjectId("..."), // Reference to a category in the Categories collection
+  "brand": "BrandName",
+  "created_at": ISODate("2024-11-05T12:00:00Z"),
+  "images": [
+    "image1.jpg",
+    "image2.jpg"
+  ],
+  "specifications": {
+    "color": "Black",
+    "storage": "128GB",
+    "RAM": "8GB"
+  },
+  "rating": 4.5,
+  "reviews": [
+    {
+      "user_id": ObjectId("..."),
+      "review_text": "Great product!",
+      "rating": 5,
+      "created_at": ISODate("2024-10-15T08:00:00Z")
+    }
+  ]
+}
+
+
+
+
+                -----PRODUCT COLLECTION-----
+
+{
+  "_id": ObjectId("..."),
+  "name": "Electronics",
+  "description": "Electronic gadgets and devices."
+}
+
+
+
+
+                -----ORDER COLLECTION-----
+
+{
+  "_id": ObjectId("..."),
+  "user_id": ObjectId("..."), // Reference to the user who placed the order
+  "order_date": ISODate("2024-11-05T15:00:00Z"),
+  "status": "Processing", // Order status: e.g., Processing, Shipped, Delivered, Cancelled
+  "items": [
+    {
+      "product_id": ObjectId("..."),
+      "quantity": 2,
+      "price": 699.99
+    }
+  ],
+  "shipping_address": {
+    "street": "123 Main St",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90001",
+    "country": "USA"
+  },
+  "total_amount": 1399.98,
+  "payment_status": "Paid", // Payment status: e.g., Pending, Paid, Refunded
+  "delivery_date": ISODate("2024-11-10T12:00:00Z")
+}
+
+
+
+
+                -----REVIEW COLLECTION-----
+
+{
+    "_id": ObjectId("..."), // Unique identifier for each review (MongoDB ObjectId)
+    "product_id": ObjectId("..."), // Reference to the product in the Product collection
+    "user_id": ObjectId("..."), // Reference to the user in the User collection
+    "review_text": "This product exceeded my expectations. Great quality!",
+    "rating": 5, // Rating out of 5
+    "created_at": ISODate("2024-11-05T08:00:00Z") // Date of the review
+  }
+  
+</h3></strong>
+</code>
+</pre>
+    </ul>
+<br><br><hr>
+<h2><u>5. Write command to show all data from product collections and sort in ascending order.</u></h2>
+<ul>
+    <li>
+<pre>
+<code>
+<h3><strong>
+                -----Show all Databases-----
+
+show onlineshop // in which onlineshop is a database name
+
+
+
+                -----sorting Databases-----
+
+db.Product.find().sort({ _id: 1 })
+
+            OR
+
+ db.Product.find().sort({ price: 1 })
+</strong></h3>
+</code>
+</pre>
+    </li>
+</ul> 
+<br><br><hr>
+<h2><u>6. Update product price for particular product.</u></h2>
+<ul>
+    <li>
+<pre>
+<code>
+<h3>
+<strong>
+                -----COMMAND-----
+
+db.Product.updateOne(
+{ _id: ObjectId("product_object_id_here") }, // Filter: replace with the actual product ID
+{ $set: { price: new_price_value } }         // Update: set the new price
+)
+</strong>
+</h3>
+
+</code>
+</pre>
+    </li>
+</ul>
+<br><br><hr>
+<h2><u>7. Write command to delete particular document and collection.</u></h2>
+<ul>
+    <li>
+<pre>
+<strong>
+<h3><strong>
+                -----COMMAND-----
+
+db.collectionName.deleteOne({ _id: ObjectId("document_object_id_here") })
+</strong></h3>
+</strong>
+</pre>
+    </li>
+</ul>
+<br><br><hr>
+
+
+</body>
+
+</html>
